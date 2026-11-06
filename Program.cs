@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿
 
 Person p1 = new Person("Петр", 22);
 Console.WriteLine(p1.GetInfo());
