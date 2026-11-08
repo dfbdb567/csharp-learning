@@ -15,7 +15,6 @@ while (IsNoEnd)
         break;
         case "2":
         int i = 0;
-        string statMark = "";
         if (items.Count ==0){
         Console.WriteLine("список пуст");
         }
@@ -23,12 +22,13 @@ while (IsNoEnd)
             {
                 foreach(var it in items){
                     i++;
+                    string statMark = "";
                     if (it.IsDone)
                     {
                         statMark = "x";
                     }
                     Console.WriteLine($"{i}. [{statMark}] {it.Item}");
-                    //Console.WriteLine($"[{(it.IsDone ? "x" : " ")}] {it.Item}");
+                    
                     
                 }
             }
@@ -36,13 +36,16 @@ while (IsNoEnd)
         case "3":
         Console.Write("Введите номер пункта для удаления: ");
         var choice1 = (Console.ReadLine());
-        if (int.TryParse(choice1, out int number))
+        if (int.TryParse(choice1, out int number) )
             {
-                DelItem(int.Parse(choice1))1;
+                var intChoise=int.Parse(choice1);
+                if(intChoise <=(items.Count))
+                DelItem(intChoise);
+                Console.Write("Удалено");
             }
             else
             {
-                 Console.Write("Вы ввели не число!");
+                 Console.Write("Введите число в рамках списка!");
             }
 
         
