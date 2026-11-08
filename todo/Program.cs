@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using System.Security.Cryptography.X509Certificates;
+﻿
 using ToDoItems;
 var items = new List<ToDo>();
 bool IsNoEnd = true;
@@ -38,9 +37,8 @@ while (IsNoEnd)
         var choice1 = (Console.ReadLine());
         if (int.TryParse(choice1, out int number) )
             {
-                var intChoise=int.Parse(choice1);
-                if(intChoise <=(items.Count))
-                DelItem(intChoise);
+                if(number <=(items.Count) && number>0)
+                DelItem(number);
                 Console.Write("Удалено");
             }
             else
