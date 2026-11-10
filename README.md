@@ -1,3 +1,5 @@
+cd C:\Users\world\hello
+@'
 # csharp-learning
 
 Учебные проекты по C# (.NET 10).
@@ -6,6 +8,5 @@
 Консольный TODO-менеджер: добавление, просмотр, удаление, отметка выполнения.
 
 ### Запуск
-```powershell
 dotnet run --project todo
-```
+'@ | Set-Content -Path README.md -Encoding utf8

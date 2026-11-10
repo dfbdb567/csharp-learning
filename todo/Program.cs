@@ -40,10 +40,14 @@ while (IsNoEnd)
                 if(number <=(items.Count) && number>0){
                 DelItem(number);
                 Console.WriteLine("Удалено");}
+                else
+                {
+                    Console.WriteLine("Вы вышли за пределы списка");
+                }
             }
             else
             {
-                 Console.Write("Введите число в рамках списка!");
+                 Console.WriteLine("Введите число в рамках списка!");
             }
 
         
@@ -56,6 +60,11 @@ while (IsNoEnd)
                 if(num <=(items.Count) && num>0){
                 items[num-1].IsDone= !items[num-1].IsDone;
                 Console.WriteLine("Отмечено");}
+                else
+                {
+                    Console.WriteLine("Вы вышли за пределы списка");
+                }
+                
             }
             else
             {
