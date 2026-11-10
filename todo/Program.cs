@@ -4,7 +4,7 @@ var items = new List<ToDo>();
 bool IsNoEnd = true;
 while (IsNoEnd)
 {
-    Console.Write("Чего желаете!? \n 1 - добавить \n 2 - показать \n 3 - удалить\n 0 - выход \n Ваш выбор: ");
+    Console.Write("Чего желаете!? \n 1 - добавить \n 2 - показать \n 3 - удалить\n 4 - отметить выполненой\n 0 - выход \n Ваш выбор: ");
     var choice = Console.ReadLine();
     switch(choice){
         case "1":
@@ -37,9 +37,9 @@ while (IsNoEnd)
         var choice1 = (Console.ReadLine());
         if (int.TryParse(choice1, out int number) )
             {
-                if(number <=(items.Count) && number>0)
+                if(number <=(items.Count) && number>0){
                 DelItem(number);
-                Console.Write("Удалено");
+                Console.WriteLine("Удалено");}
             }
             else
             {
@@ -47,6 +47,20 @@ while (IsNoEnd)
             }
 
         
+        break;
+        case "4":
+        Console.Write("Что выделить выполненым?: ");
+        var choice2 = (Console.ReadLine());
+        if (int.TryParse(choice2, out int num) )
+            {
+                if(num <=(items.Count) && num>0){
+                items[num-1].IsDone= !items[num-1].IsDone;
+                Console.WriteLine("Отмечено");}
+            }
+            else
+            {
+                 Console.Write("Введите число в рамках списка!");
+            }
         break;
         case "0":
         IsNoEnd = false;
