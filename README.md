@@ -1,5 +1,3 @@
-cd C:\Users\world\hello
-@'
 # csharp-learning
 
 Учебные проекты по C# (.NET 10).
@@ -9,4 +7,3 @@ cd C:\Users\world\hello
 
 ### Запуск
 dotnet run --project todo
-'@ | Set-Content -Path README.md -Encoding utf8
