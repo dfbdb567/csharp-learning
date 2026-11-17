@@ -54,7 +54,7 @@ while (IsNoEnd)
         if (int.TryParse(choice2, out int num) )
             {
                 if(num <=(items.Count) && num>0){
-                items[num-1].Markdown();
+                items[num-1].ToggleDone();
                 
                 Console.WriteLine("Отмечено");}
                 else

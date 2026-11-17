@@ -12,11 +12,11 @@ public class ToDo
             this.Item = item;
         }
 
-    public void Markdown()
+    public void  ToggleDone()
         {
             IsDone = !IsDone;
         }
-    public string Describe()
+    public virtual string Describe()
         {
                string statMark = "";
                     if (IsDone)
