@@ -10,7 +10,7 @@ while (IsNoEnd)
         case "1":
         Console.WriteLine("Название: ");
         var title = Console.ReadLine()??"";
-        items.Add(new ToDo(title, false));
+        items.Add(new ToDo(title));
         break;
         case "2":
         int i = 0;
@@ -21,12 +21,8 @@ while (IsNoEnd)
             {
                 foreach(var it in items){
                     i++;
-                    string statMark = "";
-                    if (it.IsDone)
-                    {
-                        statMark = "x";
-                    }
-                    Console.WriteLine($"{i}. [{statMark}] {it.Item}");
+                 
+                    Console.WriteLine($"{i}. {it.Describe()}");
                     
                     
                 }
@@ -58,7 +54,8 @@ while (IsNoEnd)
         if (int.TryParse(choice2, out int num) )
             {
                 if(num <=(items.Count) && num>0){
-                items[num-1].IsDone= !items[num-1].IsDone;
+                items[num-1].Markdown();
+                
                 Console.WriteLine("Отмечено");}
                 else
                 {
