@@ -2,7 +2,6 @@
 using ToDoItems;
 using UTI;
 var items = new List<ToDo>();
-var test = new List<UrgentTodoItem>();
 bool IsNoEnd = true;
 while (IsNoEnd)
 {
@@ -13,14 +12,14 @@ while (IsNoEnd)
         Console.WriteLine("Название: ");
         var title = Console.ReadLine()??"";
         Console.WriteLine("Срочная?[да/нет]\n");
-        string ungret  = (Console.ReadLine()).ToLower()??"";
-        if(ungret =="нет"){
+        string ungret  = Console.ReadLine()??"";
+        if(ungret.ToLower() =="нет"){
         items.Add(new ToDo(title));
         Console.WriteLine("Добавлено");
         }
             else
             {
-                if(ungret == "да")
+                if(ungret.ToLower() == "да")
                 {
                     items.Add(new UrgentTodoItem(title));
                     Console.WriteLine("Добавлено");
