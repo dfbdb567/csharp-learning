@@ -1,6 +1,8 @@
 ﻿
 using ToDoItems;
+using UTI;
 var items = new List<ToDo>();
+var test = new List<UrgentTodoItem>();
 bool IsNoEnd = true;
 while (IsNoEnd)
 {
@@ -10,7 +12,25 @@ while (IsNoEnd)
         case "1":
         Console.WriteLine("Название: ");
         var title = Console.ReadLine()??"";
+        Console.WriteLine("Срочная?[да/нет]\n");
+        string ungret  = (Console.ReadLine()).ToLower()??"";
+        if(ungret =="нет"){
         items.Add(new ToDo(title));
+        Console.WriteLine("Добавлено");
+        }
+            else
+            {
+                if(ungret == "да")
+                {
+                    items.Add(new UrgentTodoItem(title));
+                    Console.WriteLine("Добавлено");
+                }
+
+                else
+                {
+                    Console.WriteLine("Некоректный ввод!!!!");
+                }
+            }
         break;
         case "2":
         int i = 0;
@@ -19,6 +39,8 @@ while (IsNoEnd)
         }
             else
             {
+                
+
                 foreach(var it in items){
                     i++;
                  
@@ -26,6 +48,7 @@ while (IsNoEnd)
                     
                     
                 }
+                
             }
         break;
         case "3":
