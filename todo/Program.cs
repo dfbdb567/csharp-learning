@@ -2,6 +2,7 @@
 using ToDoItems;
 using UTI;
 var items = new List<ToDo>();
+var todo = new TodoList();
 bool IsNoEnd = true;
 while (IsNoEnd)
 {
@@ -13,54 +14,43 @@ while (IsNoEnd)
         var title = Console.ReadLine()??"";
         Console.WriteLine("Срочная?[да/нет]\n");
         string ungret  = Console.ReadLine()??"";
-        if(ungret.ToLower() =="нет"){
-        items.Add(new ToDo(title));
-        Console.WriteLine("Добавлено");
+        if(ungret.ToLower() =="нет" || ungret.ToLower() == "да"){
+        bool Urgent = (ungret.ToLower() == "да");
+        todo.AddItem(title,Urgent);
         }
-            else
-            {
-                if(ungret.ToLower() == "да")
-                {
-                    items.Add(new UrgentTodoItem(title));
-                    Console.WriteLine("Добавлено");
-                }
-
-                else
-                {
-                    Console.WriteLine("Некоректный ввод!!!!");
-                }
-            }
+        else
+        {
+            Console.WriteLine("Некоректный ввод!!!!");
+        }
+           
         break;
-        case "2":
-        int i = 0;
-        if (items.Count ==0){
-        Console.WriteLine("список пуст");
-        }
+         case "2":
+            if (todo.Count == 0)
+            {
+                Console.WriteLine("Список пуст");
+            }
             else
             {
                 
-
-                foreach(var it in items){
-                    i++;
-                 
-                    Console.WriteLine($"{i}. {it.Describe()}");
-                    
-                    
+                for (int i = 0; i < todo.Count; i++)
+                {
+        
+                    Console.WriteLine($"{i + 1}. {todo.GetAt(i).Describe()}");
                 }
-                
             }
-        break;
+            break;
         case "3":
         Console.Write("Введите номер пункта для удаления: ");
         var choice1 = (Console.ReadLine());
         if (int.TryParse(choice1, out int number) )
             {
-                if(number <=(items.Count) && number>0){
-                DelItem(number);
-                Console.WriteLine("Удалено");}
+               if (todo.Remove(number))
+                {
+                Console.WriteLine("Удалено");
+                }
                 else
                 {
-                    Console.WriteLine("Вы вышли за пределы списка");
+                    Console.WriteLine("Что-то пошло не так");
                 }
             }
             else
@@ -75,10 +65,10 @@ while (IsNoEnd)
         var choice2 = (Console.ReadLine());
         if (int.TryParse(choice2, out int num) )
             {
-                if(num <=(items.Count) && num>0){
-                items[num-1].ToggleDone();
-                
-                Console.WriteLine("Отмечено");}
+                if (todo.ToggleDone(num))
+                {
+                    Console.WriteLine("Отмечено");
+                }
                 else
                 {
                     Console.WriteLine("Вы вышли за пределы списка");
@@ -99,9 +89,5 @@ while (IsNoEnd)
 
     }
 
-    void DelItem(int num)
-{
-    num-=1;
-    items.RemoveAt(num);
-}
+
 }
